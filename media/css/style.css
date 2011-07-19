@@ -1,0 +1,121 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: url(../img/bg.png);
+    color: #333;
+    font: 8pt "Helvetica Neue", Calibri, Verdana, sans-serif;
+}
+
+.codeField {
+    font-size:10pt;
+}
+
+h1 a {
+    text-shadow: 1px 1px 1px #000;
+    letter-spacing: -2px;
+    font-size: 14pt;
+    color: #FFF;
+    text-decoration: none !important;
+}
+
+h1 em {
+    color: #99CC00;
+    font-size: 20pt;
+    font-style: normal;
+}
+
+h2 {
+    margin: 10px;
+    
+}
+
+sup {
+    font-style: italic;
+    font-weight: normal;
+}
+
+a {
+    color: #99CC00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.topBar {
+    background: url(../img/bgHead.png);
+    border-bottom: 2px solid #99CC00;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.header {
+    padding-left: 10px;
+}
+
+.add {
+    margin: 0 auto 0;
+    width: 500px;
+    text-align: center;  
+    padding-top: 100px;
+}
+
+div.fileinputs {
+	position: relative;
+}
+ 
+div.fakefile {
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+}
+ 
+input.file {
+	position: relative;
+	height: 28px;
+	opacity: 0;
+	z-index: 2;
+}
+
+.fileinputs input {
+    font-size: 13pt;
+    width: 490px;
+    padding: 4px;
+    color: #444;
+    border: 1px solid #888;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+}
+
+.uploadBtn {
+    font-size: 13pt;
+    color: #444;
+    margin-top: 20px;
+    border: 1px solid #AAA;
+    padding: 4px;
+    border-radius: 5px;
+    box-shadow: inset -2px -2px 3px rgba(0,0,0,0.1);
+}
+
+.uploadBtn:active {
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.1);  
+}
+
+.error {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #E60039;
+    background: #FFB3B3;
+    border-radius: 4px;
+    position: fixed;
+    margin: 0 auto 0;
+    top: 100px;
+    left: 50%;
+    margin-left: -250px;
+    width: 490px;
+    font-weight: bold;
+}
