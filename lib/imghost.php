@@ -5,7 +5,6 @@
  *
  * Main imghost class / functions
  *
- * @package imghost
  * @author Sascha Ohms
  * @copyright Copyright 2011, Sascha Ohms
  * @license http://www.gnu.org/licenses/lgpl.txt
@@ -28,21 +27,21 @@ class imghost extends main {
             return false;
 
         if(!file_exists(F3::get('imgdb'))) {
-            $this->db->sql('CREATE TABLE img_users (
-		   userID INTEGER PRIMARY KEY,
-		   userName VARCHAR,
-		   userMail VARCHAR,
+            $this->db->sql('CREATE TABLE users (
+		   name VARCHAR,
+           hash VARCHAR PRIMARY KEY,
+           salt VARCHAR,
+		   email VARCHAR,
 		   regDate INTEGER,
-		   userPass VARCHAR);');
+		   pass VARCHAR);');
 
-            $this->db->sql('CREATE TABLE img_images (
-		   imageID INTEGER PRIMARY KEY,
-		   hash VARCHAR,
+            $this->db->sql('CREATE TABLE images (
+		   hash VARCHAR PRIMARY KEY,
 		   numClicks INTEGER,
 		   insertDate INTEGER,
 		   deleteString VARCHAR,
            sum VARCHAR,
-		   uploadedBy INTEGER,
+		   uploadedBy VARCHAR,
            ext VARCHAR);');
         }
     }
@@ -52,7 +51,7 @@ class imghost extends main {
         $del = $this->get('PARAMS.del');
         $img = $this->get('PARAMS.img');
 
-        $ax = new Axon('img_images');
+        $ax = new Axon('images');
         $ax->load('hash = "' .$img. '" AND deleteString = "'.$del.'"');
 
         # deletion works w/o being logged in for now
@@ -96,23 +95,23 @@ class imghost extends main {
             $ext = $this->getExt($imgType);
             
             do {
-                $imgNewName = $this->randString();
-                $ax = new Axon('img_images');
+                $imgNewName = helper::randString();
+                $ax = new Axon('images');
                 $ax->load('hash = "' .$imgNewName. '"');                
             } while(!$ax->dry());
             
             if(move_uploaded_file($imgTmpName, $this->imagedir . $imgNewName.$ext)) {
                 $this->createThumb($imgType, $imgNewName, $ext);
-                $delString = $this->randString();
+                $delString = helper::randString();
 
                 $user= new user;
-                $ax = new Axon('img_images');
+                $ax = new Axon('images');
                 
                 $ax->hash = $imgNewName;
                 $ax->insertDate = time();
                 $ax->deleteString = $delString;
                 $ax->sum = $imgSum;
-                $ax->uploadedBy = $user->getUserId();
+                $ax->uploadedBy = $user->getHash();
                 $ax->ext = $ext;
                 $ax->save();
 
@@ -240,11 +239,6 @@ class imghost extends main {
             case 3:
                 return '.png'; break;
         }
-    }
-    
-     
-    private function randString() {
-        return substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 8);
     }
 }
 

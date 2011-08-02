@@ -15,6 +15,21 @@ class main extends F3instance {
         $img = new imghost;
         $img->delImg();
     }
+
+    function showLogin() {
+        $this->set('template', 'login.tpl.php');
+        $this->tpServe();
+    }
+
+    function doLogin() {
+        $user = new user;
+        $user->loginUser();
+    }
+
+    function showRegister() {
+        $this->set('template', 'register.tpl.php');
+        $this->tpServe();
+    }
     
     function tpServe() {
         echo Template::serve('main.tpl.php');

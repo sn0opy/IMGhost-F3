@@ -9,13 +9,7 @@
     <script txpe="text/javascript">
         jQuery(document).ready(function() {
             $('input[type=file]').each(function(){
-
-              var uploadbuttonlabeltext = $(this).attr('title'); //get title attribut for languagesettings
-              if(uploadbuttonlabeltext == ''){
-                var uploadbuttonlabeltext = 'BLARGH';
-              }
-
-              var uploadbutton = '<input type="button" class="button_button" value="'+uploadbuttonlabeltext+'" />';
+              var uploadbutton = '<input type="button" class="button_button" value="Upload" />';
                $(this).wrap('<div class="fileinputs"></div>');
                 $(this).addClass('file').css('opacity', 0); //set to invisible
                 $(this).parent().append($('<div class="fakefile" />').append($('<input type="text" />').attr('id',$(this).attr('id')+'__fake')));
@@ -44,6 +38,13 @@
 <include href="{{@template}}" />
 
 </div>
-<!-- made with toothPaste by Sascha Ohms -->
+
+<div class="footer">
+    <ul>
+        <li><a href="{{@BASE}}/login">Login</a></li>
+        <li><a href="{{@BASE}}/register">Register</a></li>
+    </ul>
+</div>
+
 </body>
 </html>

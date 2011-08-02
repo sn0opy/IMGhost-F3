@@ -5,7 +5,6 @@
  *
  * Routes and framework settings
  *
- * @package Index
  * @author Sascha Ohms
  * @copyright Copyright 2011, Sascha Ohms
  * @license http://www.gnu.org/licenses/lgpl.txt
@@ -22,6 +21,10 @@ $app->set('GUI', 'tpl/'); # do not change
 
 $app->route('GET /', 'main->start');
 $app->route('GET /del/@img/@del', 'main->del');
+$app->route('GET /reg', 'main->showReg');
+$app->route('GET /login', 'main->showLogin');
+
+$app->route('POST /login', 'main->doLogin');
 $app->route('POST /add', 'main->add');
 
 $app->run();

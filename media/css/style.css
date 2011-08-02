@@ -5,7 +5,7 @@
 
 body {
     background: url(../img/bg.png);
-    color: #333;
+    color: #666;
     font: 13pt "Helvetica Neue", Calibri, Verdana, sans-serif;
 }
 
@@ -57,6 +57,10 @@ a:hover {
     padding-left: 10px;
 }
 
+.container {
+    text-shadow: 1px 1px 1px #FFF;
+}
+
 .add {
     margin: 0 auto 0;
     width: 500px;
@@ -89,20 +93,6 @@ input.file {
     border: 1px solid #888;
     border-radius: 5px;
     box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
-}
-
-.uploadBtn {
-    font-size: 13pt;
-    color: #444;
-    margin-top: 20px;
-    border: 1px solid #AAA;
-    padding: 4px;
-    border-radius: 5px;
-    box-shadow: inset -2px -2px 3px rgba(0,0,0,0.1);
-}
-
-.uploadBtn:active {
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.1);  
 }
 
 .error {
@@ -140,7 +130,7 @@ input.file {
     margin: 100px auto 0;
 }
 
-.done input {
+.done input, .login input {
     font-size: 13pt;
     width: 250px;
     padding: 4px;
@@ -189,4 +179,62 @@ input.file {
 .done sup {
     font-size: 8pt;
     color: #999;
+}
+
+.footer {
+    width: 400px;
+    margin: 0 auto 0;
+    text-align: center;
+    margin-top: 100px;
+    text-shadow: 1px 1px 1px #FFF;
+    font-size: 9pt;
+    border-top: 1px dashed #DDD;
+    padding-top: 10px;
+}
+
+.footer a {
+    color: #999;
+}
+
+.footer a:hover {
+    color: #666;
+    text-decoration: none;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer li {
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.login {
+    margin: 0 auto 0;
+    width: 500px;
+    margin-top: 100px;
+}
+
+.clear {
+    clear: both;
+}
+
+.uploadBtn, .loginBtn {
+    font-size: 13pt;
+    color: #444;
+    margin-top: 20px;
+    border: 1px solid #AAA;
+    padding: 4px;
+    border-radius: 5px;
+    box-shadow: inset -2px -2px 3px rgba(0,0,0,0.1) !important;
+}
+
+.uploadBtn:active, .loginBtn:active {
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.1) !important;
+}
+
+.loginBtn {
+    width: 100px !important;
 }
