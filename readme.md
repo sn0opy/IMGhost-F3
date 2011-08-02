@@ -1,5 +1,37 @@
+IMGhost-f3 by Sascha Ohms
+============================
 
+INFO
+----
 
-Having issues with pictures which won't open in browser or getting 404 / 403? Try:
-chmod($this->imagedir .$imgNewName.$ext, 0644);
-        chmod($this->thumbdir.$name.$ext, 0644);
+This version of IMGhost is highly improved. It uses the Fat Free Framework as  base, has a
+new design and the code is better arranged
+
+### Thanks to
+* Bong Cosca for Fat Free Framework (http://fatfree.sf.net)
+
+INSTALLATION
+------------
+
+Simply edit the .htacces to fit your RewriteBase (Apache)
+
+Note: you **SHOULD** change the filename of your db on line 8 of the index.php!
+
+### Lighttpd User?
+Use the following snippet instead of .htaccess
+
+    url.rewrite-once = ("^/([^.]+)$" => "/index.php?$1")
+
+REQUIREMENTS
+------------
+
+You need the following to run ToothPaste
+
+* PHP 5.3
+* SQLite
+* PDO (and / or PDO SQLite)
+
+LICENCE
+-------
+
+This product is licensed under the GNU Lesser General Public License (LGPL)

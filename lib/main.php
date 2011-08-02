@@ -2,13 +2,18 @@
 
 class main extends F3instance {
     function showAdd() {
-        F3::set('template', 'add.tpl.php');
-        self::tpserve();
+        $this->set('template', 'add.tpl.php');
+        $this->tpserve();
     }
 
     function add() {
         $img = new imghost;
         $img->addImg();
+    }
+
+    function del() {
+        $img = new imghost;
+        $img->delImg();
     }
     
     function tpServe() {
@@ -16,7 +21,7 @@ class main extends F3instance {
     }
 
     function start() {
-        F3::reroute('add');
+        $this->showAdd();
     }
 }
 

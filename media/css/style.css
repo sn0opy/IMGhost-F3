@@ -6,7 +6,7 @@
 body {
     background: url(../img/bg.png);
     color: #333;
-    font: 8pt "Helvetica Neue", Calibri, Verdana, sans-serif;
+    font: 13pt "Helvetica Neue", Calibri, Verdana, sans-serif;
 }
 
 .codeField {
@@ -118,4 +118,75 @@ input.file {
     margin-left: -250px;
     width: 490px;
     font-weight: bold;
+}
+
+.success {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #4F8A10;
+    background: #DFF2BF;
+    border-radius: 4px;
+    position: fixed;
+    margin: 0 auto 0;
+    top: 100px;
+    left: 50%;
+    margin-left: -250px;
+    width: 490px;
+    font-weight: bold;
+}
+
+.done {
+    width: 700px;
+    margin: 100px auto 0;
+}
+
+.done input {
+    font-size: 13pt;
+    width: 250px;
+    padding: 4px;
+    color: #444;
+    border: 1px solid #888;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+}
+
+.formRow {
+    float: left;
+    clear: both;
+    margin-bottom: 20px;
+}
+
+.formLabel {
+    float: left;
+    width: 160px;
+    line-height: 26px;
+}
+
+.formValue {
+    float: left;
+}
+
+.preview {
+    float: left;
+    margin-right: 50px;
+}
+
+.links {
+    float: left;
+}
+
+.preview img {
+    border: 1px solid #666;
+    box-shadow: 3px 3px 10px #333;
+    padding: 10px;
+    background: #FFF;
+    padding-bottom: 50px;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+}
+
+.done sup {
+    font-size: 8pt;
+    color: #999;
 }

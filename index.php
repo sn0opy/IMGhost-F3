@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * index.php
+ *
+ * Routes and framework settings
+ *
+ * @package Index
+ * @author Sascha Ohms
+ * @copyright Copyright 2011, Sascha Ohms
+ * @license http://www.gnu.org/licenses/lgpl.txt
+ *
+**/
+
 $app = require 'lib/base.php';
 
 $app->set('RELEASE', false);
@@ -9,7 +21,7 @@ $app->set('imgdb', 'test.db'); # sqlite dbname; CHANGEME!
 $app->set('GUI', 'tpl/'); # do not change
 
 $app->route('GET /', 'main->start');
-$app->route('GET /add', 'main->showAdd');
+$app->route('GET /del/@img/@del', 'main->del');
 $app->route('POST /add', 'main->add');
 
 $app->run();

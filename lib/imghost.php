@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * imghost.php
+ *
+ * Main imghost class / functions
+ *
+ * @package imghost
+ * @author Sascha Ohms
+ * @copyright Copyright 2011, Sascha Ohms
+ * @license http://www.gnu.org/licenses/lgpl.txt
+ *
+**/
+
 class imghost extends main {
     private $db;
     private $imagedir = 'img/';
@@ -21,23 +33,54 @@ class imghost extends main {
 		   userName VARCHAR,
 		   userMail VARCHAR,
 		   regDate INTEGER,
-		   userPass VARCHAR);
+		   userPass VARCHAR);');
 
-		CREATE TABLE img_images (
+            $this->db->sql('CREATE TABLE img_images (
 		   imageID INTEGER PRIMARY KEY,
 		   hash VARCHAR,
 		   numClicks INTEGER,
 		   insertDate INTEGER,
 		   deleteString VARCHAR,
            sum VARCHAR,
-		   uploadedBy INTEGER);');
+		   uploadedBy INTEGER,
+           ext VARCHAR);');
+        }
+    }
+
+
+    public function delImg() {
+        $del = $this->get('PARAMS.del');
+        $img = $this->get('PARAMS.img');
+
+        $ax = new Axon('img_images');
+        $ax->load('hash = "' .$img. '" AND deleteString = "'.$del.'"');
+
+        # deletion works w/o being logged in for now
+        if(!$ax->dry()) {
+            $ext = $ax->ext;
+            $hash = $ax->hash;
+
+            unlink('img/'.$hash.$ext);
+            unlink('thumb/'.$hash.$ext);
+
+            $ax->erase();
+
+            $this->set('SUCCESS', 'Image has been deleted');
+            $this->set('template', 'add.tpl.php');
+            $this->tpServe();
+            return true;
+        } else {
+            $this->set('ERROR', 'Delete string and image name do not match.');
+            $this->set('template', 'add.tpl.php');
+            $this->tpServe();
+            return false;
         }
     }
     
 
     public function addImg() {
         if($this->get('FILES.image.error')) {
-            $this->set('ERROR', 'Beim Upload ist ein Fehler aufgetreten.');
+            $this->set('ERROR', 'There was an error while uploading.');
             $this->set('template', 'add.tpl.php');
             $this->tpServe();
             return false;
@@ -58,9 +101,33 @@ class imghost extends main {
                 $ax->load('hash = "' .$imgNewName. '"');                
             } while(!$ax->dry());
             
-            move_uploaded_file($imgTmpName, $this->imagedir . $imgNewName.$ext);
-            $this->createThumb($imgType, $imgNewName, $ext);
-            #$this->reroute($this->get('BASE').'/'.$this->imagedir.$imgNewName.$ext);
+            if(move_uploaded_file($imgTmpName, $this->imagedir . $imgNewName.$ext)) {
+                $this->createThumb($imgType, $imgNewName, $ext);
+                $delString = $this->randString();
+
+                $user= new user;
+                $ax = new Axon('img_images');
+                
+                $ax->hash = $imgNewName;
+                $ax->insertDate = time();
+                $ax->deleteString = $delString;
+                $ax->sum = $imgSum;
+                $ax->uploadedBy = $user->getUserId();
+                $ax->ext = $ext;
+                $ax->save();
+
+                $this->set('ext', $ext);
+                $this->set('name', $imgNewName);
+                $this->set('del', $delString);
+
+                $this->set('template', 'showInfo.php');
+                $this->tpServe();
+            } else {
+                $this->set('ERROR', 'Missing write permissions on destination dir.');
+                $this->set('template', 'add.tpl.php');
+                $this->tpServe();
+                return false;
+            }
         }        
     }
 
