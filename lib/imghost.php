@@ -69,7 +69,7 @@ class imghost extends main {
             $this->tpServe();
             return true;
         } else {
-            $this->set('ERROR', 'Delete string and image name do not match.');
+            $this->set('ERROR', 'Delete string and image name do not match / exist.');
             $this->set('template', 'add.tpl.php');
             $this->tpServe();
             return false;
@@ -94,15 +94,17 @@ class imghost extends main {
             $imgType = $this->get('imgInfo.2');
             $ext = $this->getExt($imgType);
             
+            $helper = new helper;
+            
             do {
-                $imgNewName = helper::randString();
+                $imgNewName = $helper->randString();
                 $ax = new Axon('images');
                 $ax->load('hash = "' .$imgNewName. '"');                
             } while(!$ax->dry());
             
             if(move_uploaded_file($imgTmpName, $this->imagedir . $imgNewName.$ext)) {
                 $this->createThumb($imgType, $imgNewName, $ext);
-                $delString = helper::randString();
+                $delString = $helper->randString();
 
                 $user= new user;
                 $ax = new Axon('images');

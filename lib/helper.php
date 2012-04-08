@@ -11,7 +11,7 @@
  *
 **/
 
-class helper {
+class helper extends F3instance {
     public function randString() {
         return substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 8);
     }

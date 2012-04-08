@@ -10,7 +10,7 @@
             <div class="formValue"><input type="password" name="pwd" /></div>
         </div>
         <div class="formRow">
-            <div class="formLabel"><input type="submit" value="Login" class="loginBtn" /></div>
+            <div class="formLabel"><input type="submit" value="Login" class="btn btn-inverse" /></div>
             <div class="formValue"> </div>
         </div>
         <br class="clear" />

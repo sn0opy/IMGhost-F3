@@ -3,7 +3,7 @@
     <div class="preview">
         <img src="{{@PROTOCOL}}://{{@SERVER.HTTP_HOST}}/thumb/{{@name}}{{@ext}}" alt="" />
     </div>
-    <div class="links">
+    <div class="links fileinputs">
         <div class="formRow">
             <div class="formLabel">Direct link</div>
             <div class="formValue"><input type='text' value='{{@PROTOCOL}}://{{@SERVER.HTTP_HOST}}/img/{{@name}}{{@ext}}' onmouseover='this.select()' /></div>
@@ -26,3 +26,5 @@
         </div>
     </div>
 </div>
+
+<br class="clearfix" />

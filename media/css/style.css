@@ -69,7 +69,7 @@ a:hover {
 }
 
 div.fileinputs {
-	position: relative;
+    position: relative;
 }
  
 div.fakefile {
@@ -89,18 +89,20 @@ input.file {
     font-size: 13pt;
     width: 490px;
     padding: 4px;
-    color: #444;
-    border: 1px solid #888;
+    border: 1px solid #BBB;
+	color: #666;
     border-radius: 5px;
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .error {
+    .rounded-corners;
     text-align: center;
     padding: 5px;
     border: 1px solid #E60039;
     background: #FFB3B3;
-    border-radius: 4px;
     position: fixed;
     margin: 0 auto 0;
     top: 100px;
@@ -108,14 +110,15 @@ input.file {
     margin-left: -250px;
     width: 490px;
     font-weight: bold;
+    color: #333;
 }
 
 .success {
+    .rounded-corners;
     text-align: center;
     padding: 5px;
     border: 1px solid #4F8A10;
     background: #DFF2BF;
-    border-radius: 4px;
     position: fixed;
     margin: 0 auto 0;
     top: 100px;
@@ -123,6 +126,7 @@ input.file {
     margin-left: -250px;
     width: 490px;
     font-weight: bold;
+    color: #333;
 }
 
 .done {
@@ -131,13 +135,23 @@ input.file {
 }
 
 .done input, .login input {
-    font-size: 13pt;
-    width: 250px;
-    padding: 4px;
-    color: #444;
-    border: 1px solid #888;
-    border-radius: 5px;
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+input:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  outline: 0;
+  outline: thin dotted \9;
 }
 
 .formRow {
@@ -165,6 +179,9 @@ input.file {
     float: left;
 }
 
+.links input {
+	width: 250px;
+}
 .preview img {
     border: 1px solid #666;
     box-shadow: 3px 3px 10px #333;
@@ -222,19 +239,112 @@ input.file {
 }
 
 .uploadBtn, .loginBtn {
-    font-size: 13pt;
-    color: #444;
     margin-top: 20px;
-    border: 1px solid #AAA;
-    padding: 4px;
-    border-radius: 5px;
-    box-shadow: inset -2px -2px 3px rgba(0,0,0,0.1) !important;
-}
-
-.uploadBtn:active, .loginBtn:active {
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.1) !important;
 }
 
 .loginBtn {
     width: 100px !important;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.btn {
+  display: inline-block;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  border: 1px solid #cccccc;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  *margin-left: .3em;
+}
+.btn:hover,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  background-color: #e6e6e6;
+}
+.btn:active,
+.btn.active {
+  background-color: #cccccc \9;
+}
+.btn:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -ms-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn-inverse {
+  background-color: #414141;
+  background-image: -moz-linear-gradient(top, #555555, #222222);
+  background-image: -ms-linear-gradient(top, #555555, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#222222));
+  background-image: -webkit-linear-gradient(top, #555555, #222222);
+  background-image: -o-linear-gradient(top, #555555, #222222);
+  background-image: linear-gradient(top, #555555, #222222);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#222222', GradientType=0);
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn-inverse:hover,
+.btn-inverse:active,
+.btn-inverse.active,
+.btn-inverse.disabled,
+.btn-inverse[disabled] {
+  background-color: #222222;
+}
+.btn-inverse:active,
+.btn-inverse.active {
+  background-color: #080808 \9;
+}
+
+input[type="file"] {
+  width: auto;
+  padding: initial;
+  line-height: initial;
+  border: initial;
+  background-color: #ffffff;
+  background-color: initial;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  line-height: 18px \9;
 }

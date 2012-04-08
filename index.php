@@ -15,7 +15,7 @@ $app = require 'lib/base.php';
 
 $app->set('RELEASE', false);
 $app->set('DEBUG', true);
-$app->set('CACHE', 'folder=cache/'); # you can use other caching engines too
+$app->set('CACHE', false); // 'folder=cache/'); # you can use other caching engines too
 $app->set('imgdb', 'test.db'); # sqlite dbname; CHANGEME!
 $app->set('GUI', 'tpl/'); # do not change
 
@@ -28,5 +28,11 @@ $app->route('POST /login', 'main->doLogin');
 $app->route('POST /add', 'main->add');
 
 $app->run();
+
+/*
+ * TODO: http://tablesorter.com/docs/ nutzen
+ * 
+ * 
+ */
 
 ?>
